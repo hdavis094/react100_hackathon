@@ -13,7 +13,7 @@ function RecipeBook({ plan }) {
         setLoading(true);
         try {
             const fullRecipes = await Promise.all(
-                uniqueIds.map((id) => fetch(`http://localhost:3000/api/recipe/${id}`).then((res) => res.json()))
+                uniqueIds.map((id) => fetch(`/api/recipe/${id}`).then((res) => res.json()))
             );
             setRecipesDetails(fullRecipes);
         } catch (err) {

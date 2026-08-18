@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
 import SearchForm from '../components/SearchForm';
 import RecipeList from '../components/RecipeList';
 import WeeklyPlanTable from '../components/WeeklyPlanTable';
@@ -23,7 +22,7 @@ function App() {
   const handleGenerateMenu = async () => {
     //todo add try and catch for error handling 
     const res = await fetch(
-      `http://localhost:3000/api/recipes?ingredient=${encodeURIComponent(ingredient)}`
+      `/api/recipes?ingredient=${encodeURIComponent(ingredient)}`
     );
     const data = await res.json();
     console.log(data);
@@ -47,7 +46,7 @@ function App() {
   const handleSelectRecipe = async (idMeal) => {
     setLoadingRecipe(true);
     try {
-      const res = await fetch(`http://localhost:3000/api/recipe/${idMeal}`);
+      const res = await fetch(`/api/recipe/${idMeal}`);
       const data = await res.json();
       setSelectedRecipe(data);
     } catch (err) {
